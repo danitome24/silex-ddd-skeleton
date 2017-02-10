@@ -11,8 +11,5 @@ db:
   image: mysql
   ports:
     - "3306:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: 123456
-    MYSQL_USER: dev
-    MYSQL_PASSWORD: 123456
-    MYSQL_DATABASE: myapp
+  env_file:
+    - environment.env
