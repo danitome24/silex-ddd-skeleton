@@ -5,9 +5,16 @@ use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
+use Silex\Provider\FormServiceProvider;
+use Silex\Provider\TranslationServiceProvider;
 
 $app = new Application();
+$app->register(new FormServiceProvider());
 $app->register(new ServiceControllerServiceProvider());
+$app->register(new Silex\Provider\ValidatorServiceProvider());
+$app->register(new TranslationServiceProvider(), [
+    'locale' => 'en',
+]);
 $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());

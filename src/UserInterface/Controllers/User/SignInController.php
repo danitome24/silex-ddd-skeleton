@@ -8,15 +8,26 @@
 
 namespace UserInterface\Controllers\User;
 
-
 use Silex\Application;
 
 class SignInController
 {
+    /**
+     * @var Application
+     */
+    private $application;
 
-    public function indexAction(Application $application)
+    public function __construct(Application $application)
     {
+        $this->application = $application;
+    }
 
-        return $application['twig']->render('views/user/login.html.twig', []);
+    public function indexAction()
+    {
+        return $this->application['twig']->render('views/user/login.html.twig',
+            [
+                'form' => $this->application['sign_in_form']->createView()
+            ]
+        );
     }
 }

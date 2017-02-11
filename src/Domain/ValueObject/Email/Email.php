@@ -10,6 +10,8 @@ namespace Domain\ValueObject\Email;
 
 class Email
 {
+    const MAX_LENGTH = 50;
+    const MIN_LENGTH = 5;
     /**
      * @var string
      */

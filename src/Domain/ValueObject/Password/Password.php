@@ -11,6 +11,9 @@ namespace Domain\ValueObject\Password;
 
 class Password
 {
+    const MAX_LENGTH = 20;
+    const MIN_LENGTH = 8;
+
     /**
      * @var
      */

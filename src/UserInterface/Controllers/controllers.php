@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 //Request::setTrustedProxies(array('127.0.0.1'));
 
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('templates/index.html.twig', array());
+    return $app['twig']->render('index.html.twig', array());
 })->bind('homepage');
 
 $app->get('/signin', "signin.controller:indexAction");
