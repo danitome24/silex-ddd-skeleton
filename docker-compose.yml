@@ -1,15 +1,9 @@
 web:
   build: .
-  command: php -S 0.0.0.0:8000 -t /app
-  links:
-    - db
   ports:
-    - "8000:8000"
-  volumes:
-    - .:/app
-db:
-  image: mysql
-  ports:
+    - "8000:80"
     - "3306:3306"
+  volumes:
+    - .:/var/www/html
   env_file:
     - environment.env

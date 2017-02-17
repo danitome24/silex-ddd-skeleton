@@ -22,7 +22,10 @@
         "symfony/translation": "^3.2",
         "symfony/twig-bridge": "^3.2",
         "symfony/validator": "^3.2",
-        "ramsey/uuid": "^3.4"
+        "ramsey/uuid": "^3.4",
+        "symfony/yaml": "^3.2",
+        "doctrine/orm": "^2.0",
+        "dflydev/doctrine-orm-service-provider": "2.0.1"
     },
     "autoload": {
         "psr-0": { "": "src/" }

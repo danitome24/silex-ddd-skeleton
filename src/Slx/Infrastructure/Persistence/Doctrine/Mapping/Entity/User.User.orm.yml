@@ -1,0 +1,14 @@
+Slx\Domain\Entity\User\User:
+  type: entity
+  repositoryClass: Slx\Infrastructure\Persistence\Doctrine\Repository\User\UserDoctrineRepository
+  table: user
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+  embedded:
+    password:
+      class: Slx\Domain\ValueObject\Password\Password
+    email:
+      class: Slx\Domain\ValueObject\Email\Email
+    uid:
+      class: Slx\Domain\Entity\User\UserId

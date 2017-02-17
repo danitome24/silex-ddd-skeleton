@@ -1,0 +1,5 @@
+Slx\Domain\ValueObject\Email\Email:
+  type: embeddable
+  fields:
+    email:
+      type: string
