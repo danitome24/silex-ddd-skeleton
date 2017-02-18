@@ -16,6 +16,8 @@ $app->match('/signin', "signin.controller:indexAction")->bind('signin');
 
 $app->match('/signup', 'signup.controller:indexAction')->bind('signup');
 
+$app->get('/home', 'home.controller:indexAction')->bind('home');
+
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

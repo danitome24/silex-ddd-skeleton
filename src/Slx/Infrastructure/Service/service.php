@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Slx\Application\CommandHandler\User\SignInUserCommandHandler;
 use Slx\Infrastructure\Service\User\PasswordHashingService;
 use Slx\Infrastructure\Service\User\AuthenticateUserService;
+use Slx\UserInterface\Controllers\User\SignUpController;
+use Slx\UserInterface\Controllers\Home\HomeController;
 
 /**
  * Controllers
@@ -16,7 +18,10 @@ $app['signin.controller'] = function () use ($app) {
     return new SignInController($app);
 };
 $app['signup.controller'] = function () use ($app) {
-    return new \Slx\UserInterface\Controllers\User\SignUpController($app);
+    return new SignUpController($app);
+};
+$app['home.controller'] = function () use ($app) {
+    return new HomeController($app);
 };
 
 /**

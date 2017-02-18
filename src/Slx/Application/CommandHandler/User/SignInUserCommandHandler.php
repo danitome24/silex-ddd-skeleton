@@ -11,9 +11,11 @@ namespace Slx\Application\CommandHandler\User;
 use Slx\Application\Command\User\SignInUserCommand;
 use Slx\Domain\Entity\User\User;
 use Slx\Domain\Entity\User\UserDoesNotExistsException;
+use Slx\Domain\Entity\User\UserPasswordDoesNotMatchException;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
 use Slx\Domain\Service\User\PasswordHashingService;
 use Slx\Domain\Service\User\UserAuthentifierService;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class SignInUserCommandHandler
 {
@@ -51,6 +53,7 @@ class SignInUserCommandHandler
      * @param SignInUserCommand $userRequest
      * @return bool
      * @throws UserDoesNotExistsException
+     * @throws UserPasswordDoesNotMatchException
      */
     public function execute(SignInUserCommand $userRequest)
     {
@@ -60,11 +63,11 @@ class SignInUserCommandHandler
             throw new UserDoesNotExistsException();
         }
         $isVerified = $this->hashingService->verifyPassword($user->password(), $userRequest->password());
-        if ($isVerified) {
-            $this->authentifierService->authenticate($user);
+        if (!$isVerified) {
+            throw new UserPasswordDoesNotMatchException();
         }
 
-        dump($isVerified);
-        return 'OK';
+        $this->authentifierService->authenticate($user);
+        return true;
     }
 }
