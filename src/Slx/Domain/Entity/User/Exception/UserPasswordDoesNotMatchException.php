@@ -6,7 +6,7 @@
  * Time: 17:58
  */
 
-namespace Slx\Domain\Entity\User;
+namespace Slx\Domain\Entity\User\Exception;
 
 class UserPasswordDoesNotMatchException extends \Exception
 {

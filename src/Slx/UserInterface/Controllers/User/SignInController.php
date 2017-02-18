@@ -10,7 +10,7 @@ namespace Slx\UserInterface\Controllers\User;
 
 use Slx\Application\Command\User\SignInUserCommand;
 use Silex\Application;
-use Slx\Domain\Entity\User\UserPasswordDoesNotMatchException;
+use Slx\Domain\Entity\User\Exception\UserPasswordDoesNotMatchException;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;

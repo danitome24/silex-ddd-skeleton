@@ -10,8 +10,8 @@ namespace Slx\Application\CommandHandler\User;
 
 use Slx\Application\Command\User\SignInUserCommand;
 use Slx\Domain\Entity\User\User;
-use Slx\Domain\Entity\User\UserDoesNotExistsException;
-use Slx\Domain\Entity\User\UserPasswordDoesNotMatchException;
+use Slx\Domain\Entity\User\Exception\UserDoesNotExistsException;
+use Slx\Domain\Entity\User\Exception\UserPasswordDoesNotMatchException;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
 use Slx\Domain\Service\User\PasswordHashingService;
 use Slx\Domain\Service\User\UserAuthentifierService;

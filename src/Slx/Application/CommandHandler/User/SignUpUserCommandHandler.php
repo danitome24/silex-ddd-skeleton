@@ -10,7 +10,7 @@ namespace Slx\Application\CommandHandler\User;
 
 use Slx\Application\Command\User\SignUpUserCommand;
 use Slx\Domain\Entity\User\User;
-use Slx\Domain\Entity\User\UserAlreadyExistsException;
+use Slx\Domain\Entity\User\Exception\UserAlreadyExistsException;
 use Slx\Domain\Entity\User\UserId;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
 use Slx\Domain\Service\User\PasswordHashingService;

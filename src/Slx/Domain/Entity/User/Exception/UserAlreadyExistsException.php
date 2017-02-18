@@ -6,7 +6,7 @@
  * Time: 0:42
  */
 
-namespace Slx\Domain\Entity\User;
+namespace Slx\Domain\Entity\User\Exception;
 
 class UserAlreadyExistsException extends \Exception
 {

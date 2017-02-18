@@ -6,7 +6,7 @@
  * Time: 13:25
  */
 
-namespace Slx\Domain\Entity\User;
+namespace Slx\Domain\Entity\User\Exception;
 
 class UserDoesNotExistsException extends \Exception
 {

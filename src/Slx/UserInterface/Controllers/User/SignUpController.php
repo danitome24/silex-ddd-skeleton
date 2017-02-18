@@ -10,7 +10,7 @@ namespace Slx\UserInterface\Controllers\User;
 
 use Silex\Application;
 use Slx\Application\Command\User\SignUpUserCommand;
-use Slx\Domain\Entity\User\UserAlreadyExistsException;
+use Slx\Domain\Entity\User\Exception\UserAlreadyExistsException;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormError;
 
