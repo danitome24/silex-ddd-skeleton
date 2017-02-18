@@ -16,6 +16,7 @@ Slx\Domain\Entity\User\User:
       class: Slx\Domain\Entity\User\UserId
       columnPrefix: false
   fields:
-    userName:
+    username:
+      column: userName
       type: string
       nullable: false

@@ -13,7 +13,7 @@ class SignUpUserCommand
     /**
      * @var string
      */
-    private $userName;
+    private $username;
 
     /**
      * @var string
@@ -28,6 +28,7 @@ class SignUpUserCommand
     /**
      * SignUpUserCommand constructor.
      *
+     * @param string $userName
      * @param string $email
      * @param $password
      */
@@ -35,7 +36,7 @@ class SignUpUserCommand
     {
         $this->email = $email;
         $this->password = $password;
-        $this->userName = $userName;
+        $this->username = $userName;
     }
 
     /**
@@ -57,9 +58,9 @@ class SignUpUserCommand
     /**
      * @return string
      */
-    public function userName()
+    public function username()
     {
-        return $this->userName;
+        return $this->username;
     }
 
 }

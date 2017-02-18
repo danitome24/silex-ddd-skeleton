@@ -42,7 +42,7 @@ class SignUpUserCommandHandler
 
         $user = new User(
             UserId::generateUserId(),
-            $userRequest->userName(),
+            $userRequest->username(),
             $userRequest->email(),
             $userRequest->password()
         );

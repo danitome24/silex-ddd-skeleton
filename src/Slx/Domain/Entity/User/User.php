@@ -21,7 +21,7 @@ class User
     /**
      * @var string
      */
-    private $userName;
+    private $username;
 
     /**
      * @var Email
@@ -54,7 +54,7 @@ class User
     public function __construct(UserId $userId, string $userName, string $email, string $passwd)
     {
         $this->uid = $userId;
-        $this->userName = $userName;
+        $this->username = $userName;
         $this->email = Email::fromString($email);
         $this->password = Password::fromString($passwd);
         $this->createdOn = new \DateTime();

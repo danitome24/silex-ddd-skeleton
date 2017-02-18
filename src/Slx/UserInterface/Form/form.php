@@ -24,11 +24,11 @@ $app['sign_in_form'] = $app['form.factory']->createBuilder(FormType::class, [
     ->getForm();
 
 $app['sign_up_form'] = $app['form.factory']->createBuilder(FormType::class, [
-    'userName' => 'UserName',
+    'username' => 'UserName',
     'password' => 'Your Password',
     'email' => 'Your email',
 ])
-    ->add('userName', TextType::class, [
+    ->add('username', TextType::class, [
         'constraints' => [
             new Assert\NotBlank(),
         ]
