@@ -9,6 +9,7 @@
 namespace Slx\Domain\Entity\User;
 
 use Slx\Domain\ValueObject\Email\Email;
+use Slx\Domain\ValueObject\Password\Password;
 
 class User
 {
@@ -55,7 +56,7 @@ class User
         $this->uid = $userId;
         $this->userName = $userName;
         $this->email = Email::fromString($email);
-        $this->password = $passwd;
+        $this->password = Password::fromString($passwd);
         $this->createdOn = new \DateTime();
         $this->updatedOn = new \DateTime();
     }

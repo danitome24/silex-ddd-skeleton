@@ -8,7 +8,14 @@ Slx\Domain\Entity\User\User:
   embedded:
     password:
       class: Slx\Domain\ValueObject\Password\Password
+      columnPrefix: false
     email:
       class: Slx\Domain\ValueObject\Email\Email
+      columnPrefix: false
     uid:
       class: Slx\Domain\Entity\User\UserId
+      columnPrefix: false
+  fields:
+    userName:
+      type: string
+      nullable: false

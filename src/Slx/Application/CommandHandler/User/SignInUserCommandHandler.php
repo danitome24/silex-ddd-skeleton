@@ -31,7 +31,6 @@ class SignInUserCommandHandler
      */
     public function execute(SignInUserCommand $userRequest)
     {
-        dump($this->userRepository->findAll());die;
         //TODO build authencitacion service!!
         if (null != $userRequest->email() && null != $userRequest->password()) {
             return true;

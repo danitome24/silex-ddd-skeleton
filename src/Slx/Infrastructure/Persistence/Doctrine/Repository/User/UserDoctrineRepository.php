@@ -8,8 +8,30 @@
 
 namespace Slx\Infrastructure\Persistence\Doctrine\Repository\User;
 
+use Doctrine\ORM\EntityRepository;
+use Slx\Domain\Entity\User\User;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
+use Slx\Infrastructure\Persistence\Doctrine\Repository\AbstractEntityRepository;
 
-class UserDoctrineRepository extends \Doctrine\ORM\EntityRepository implements UserRepositoryInterface
+class UserDoctrineRepository extends EntityRepository implements UserRepositoryInterface
 {
+    /**
+     * @param User $user
+     * @return mixed|void
+     */
+    public function add(User $user)
+    {
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @param $email
+     *
+     * @return array
+     */
+    public function fetchByEmail($email)
+    {
+        return parent::findBy(['email.email' => $email]);
+    }
 }
