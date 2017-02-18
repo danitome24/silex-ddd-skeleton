@@ -42,8 +42,8 @@ class SignInController
         if ($form->isValid()) {
             $isSignedIn = $this->application['signin.service']->execute(
                 new SignInUserCommand(
-                    $form->get('email'),
-                    $form->get('password')
+                    $form->get('email')->getData(),
+                    $form->get('password')->getData()
                 )
             );
 

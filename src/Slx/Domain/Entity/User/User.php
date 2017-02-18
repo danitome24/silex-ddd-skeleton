@@ -61,8 +61,27 @@ class User
         $this->updatedOn = new \DateTime();
     }
 
+    /**
+     * @return UserId
+     */
     public function id(): UserId
     {
-        $this->uid;
+        return $this->uid;
+    }
+
+    /**
+     * @return Password
+     */
+    public function password(): Password
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function username(): string
+    {
+        return $this->username;
     }
 }

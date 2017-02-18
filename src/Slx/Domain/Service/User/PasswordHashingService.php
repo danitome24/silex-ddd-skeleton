@@ -13,9 +13,17 @@ use Slx\Domain\ValueObject\Password\Password;
 interface PasswordHashingService
 {
     /**
-     * @param Password $password
+     * @param string $password
      *
      * @return mixed
      */
-    public function hash(Password $password);
+    public function hash(string $password);
+
+    /**
+     * @param Password $userPassword
+     * @param string $passwordToVerify
+     *
+     * @return mixed
+     */
+    public function verifyPassword(Password $userPassword, string $passwordToVerify);
 }

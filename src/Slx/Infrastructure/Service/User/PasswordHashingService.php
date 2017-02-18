@@ -8,43 +8,30 @@
 
 namespace Slx\Infrastructure\Service\User;
 
-use Slx\Domain\Entity\User\User;
 use Slx\Domain\Service\User\PasswordHashingService as PasswordHashingServiceInterface;
 use Slx\Domain\ValueObject\Password\Password;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 class PasswordHashingService implements PasswordHashingServiceInterface
 {
 
     /**
-     * @var PasswordEncoderInterface
-     */
-    private $passwordEncoder;
-    /**
-     * @var User
-     */
-    private $user;
-
-    /**
-     * PasswordHashingService constructor.
-     *
-     * @param User $user
-     * @param PasswordEncoderInterface $passwordEncoder
-     */
-    public function __construct(User $user, PasswordEncoderInterface $passwordEncoder)
-    {
-        $this->passwordEncoder = $passwordEncoder;
-        $this->user = $user;
-    }
-
-    /**
-     * @param Password $password
+     * @param string $password
      *
      * @return mixed
      */
-    public function hash(Password $password)
+    public function hash(string $password)
     {
-        return $this->passwordEncoder->encodePassword($this->user, $password);
+        return sha1($password);
+    }
+
+    /**
+     * @param Password $userPassword
+     * @param string $passwordToVerify
+     *
+     * @return bool
+     */
+    public function verifyPassword(Password $userPassword, string $passwordToVerify)
+    {
+        return (sha1($passwordToVerify) == $userPassword->password());
     }
 }

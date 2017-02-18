@@ -32,6 +32,6 @@ class UserDoctrineRepository extends EntityRepository implements UserRepositoryI
      */
     public function fetchByEmail($email)
     {
-        return parent::findBy(['email.email' => $email]);
+        return parent::findOneBy(['email.email' => $email]);
     }
 }

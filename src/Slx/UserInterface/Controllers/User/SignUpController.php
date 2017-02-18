@@ -40,7 +40,7 @@ class SignUpController
             if ($form->isValid()) {
                 $this->application['signup.service']->execute(
                     new SignUpUserCommand(
-                        $form->get('userName')->getData(),
+                        $form->get('username')->getData(),
                         $form->get('email')->getData(),
                         $form->get('password')->getData()
                     )

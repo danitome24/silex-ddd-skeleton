@@ -5,10 +5,10 @@
         <h3 class="cover-heading">Sign up</h3>
         {{ form_start(form) }}
         {{ form_errors(form) }}
-        <div class="form-group{{ form.userName.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.userName, null, { 'label_attr' : { 'class' : 'control-label'}}) }}
-            {{ form_widget(form.userName) }}
-            {{ form_errors(form.userName) }}
+        <div class="form-group{{ form.username.vars.valid ? '' : ' has-error' }}">
+            {{ form_label(form.username, null, { 'label_attr' : { 'class' : 'control-label'}}) }}
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
         </div>
 
         <div class="form-group{{ form.email.vars.valid ? '' : ' has-error' }}">

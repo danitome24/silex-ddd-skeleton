@@ -39,4 +39,14 @@ class Password
     {
         return new self($pwd);
     }
+
+    /**
+     * Get password.
+     *
+     * @return string
+     */
+    public function password(): string
+    {
+        return $this->password;
+    }
 }

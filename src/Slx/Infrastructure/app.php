@@ -15,6 +15,7 @@ $app->register(new FormServiceProvider());
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 $app->register(new Silex\Provider\LocaleServiceProvider());
+$app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'locale' => 'en',
 ));

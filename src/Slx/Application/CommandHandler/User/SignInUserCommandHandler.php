@@ -9,7 +9,11 @@
 namespace Slx\Application\CommandHandler\User;
 
 use Slx\Application\Command\User\SignInUserCommand;
+use Slx\Domain\Entity\User\User;
+use Slx\Domain\Entity\User\UserDoesNotExistsException;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
+use Slx\Domain\Service\User\PasswordHashingService;
+use Slx\Domain\Service\User\UserAuthentifierService;
 
 class SignInUserCommandHandler
 {
@@ -17,10 +21,28 @@ class SignInUserCommandHandler
      * @var UserRepositoryInterface
      */
     private $userRepository;
+    /**
+     * @var PasswordHashingService
+     */
+    private $hashingService;
+    /**
+     * @var UserAuthentifierService
+     */
+    private $authentifierService;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    /**
+     * SignInUserCommandHandler constructor.
+     *
+     * @param UserRepositoryInterface $userRepository
+     * @param PasswordHashingService $hashingService
+     * @param UserAuthentifierService $authentifierService
+     */
+    public function __construct(UserRepositoryInterface $userRepository, PasswordHashingService $hashingService,
+                                UserAuthentifierService $authentifierService)
     {
         $this->userRepository = $userRepository;
+        $this->hashingService = $hashingService;
+        $this->authentifierService = $authentifierService;
     }
 
     /**
@@ -28,15 +50,21 @@ class SignInUserCommandHandler
      *
      * @param SignInUserCommand $userRequest
      * @return bool
+     * @throws UserDoesNotExistsException
      */
     public function execute(SignInUserCommand $userRequest)
     {
-        //TODO build authencitacion service!!
-        if (null != $userRequest->email() && null != $userRequest->password()) {
-            return true;
+        /** @var User $user */
+        $user = $this->userRepository->fetchByEmail($userRequest->email());
+        if (null == $user) {
+            throw new UserDoesNotExistsException();
+        }
+        $isVerified = $this->hashingService->verifyPassword($user->password(), $userRequest->password());
+        if ($isVerified) {
+            $this->authentifierService->authenticate($user);
         }
 
-
-        return false;
+        dump($isVerified);
+        return 'OK';
     }
 }

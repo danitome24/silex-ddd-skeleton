@@ -13,6 +13,7 @@ use Slx\Domain\Entity\User\User;
 use Slx\Domain\Entity\User\UserAlreadyExistsException;
 use Slx\Domain\Entity\User\UserId;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
+use Slx\Domain\Service\User\PasswordHashingService;
 
 class SignUpUserCommandHandler
 {
@@ -20,10 +21,15 @@ class SignUpUserCommandHandler
      * @var UserRepositoryInterface
      */
     private $userRepository;
+    /**
+     * @var PasswordHashingService
+     */
+    private $hashingService;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository, PasswordHashingService $hashingService)
     {
         $this->userRepository = $userRepository;
+        $this->hashingService = $hashingService;
     }
 
     /**
@@ -44,7 +50,7 @@ class SignUpUserCommandHandler
             UserId::generateUserId(),
             $userRequest->username(),
             $userRequest->email(),
-            $userRequest->password()
+            $this->hashingService->hash($userRequest->password())
         );
 
         $this->userRepository->add($user);
