@@ -3,7 +3,9 @@
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Slx\Application\CommandHandler\User\SignUpUserCommandHandler;
+use Slx\Application\UseCase\User\SignOutUserUseCase;
 use Slx\UserInterface\Controllers\User\SignInController;
+use Slx\UserInterface\Controllers\User\SignOutController;
 use Symfony\Component\HttpFoundation\Request;
 use Slx\Application\CommandHandler\User\SignInUserCommandHandler;
 use Slx\Infrastructure\Service\User\PasswordHashingService;
@@ -23,6 +25,9 @@ $app['signup.controller'] = function () use ($app) {
 $app['home.controller'] = function () use ($app) {
     return new HomeController($app);
 };
+$app['signout.controller'] = function () use ($app) {
+    return new SignOutController($app);
+};
 
 /**
  * Services
@@ -35,6 +40,9 @@ $app['signin.service'] = function () use ($app) {
 };
 $app['signup.service'] = function () use ($app) {
     return new SignUpUserCommandHandler($app['user_repository'], $app['haspassword.service']);
+};
+$app['signout.service'] = function () use ($app) {
+    return new SignOutUserUseCase($app['authentication.service']);
 };
 $app['authentication.service'] = function () use ($app) {
     return new AuthenticateUserService($app['session']);

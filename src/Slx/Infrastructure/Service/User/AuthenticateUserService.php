@@ -40,4 +40,14 @@ class AuthenticateUserService implements UserAuthentifierService
     {
         $this->session->set('user', ['username' => $user->username()]);
     }
+
+    /**
+     * Remove session
+     *
+     * @return mixed
+     */
+    public function removeSession()
+    {
+       $this->session->clear();
+    }
 }

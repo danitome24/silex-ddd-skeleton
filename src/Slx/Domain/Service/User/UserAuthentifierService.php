@@ -20,4 +20,11 @@ interface UserAuthentifierService
      * @return mixed
      */
     public function authenticate(User $user);
+
+    /**
+     * Remove session
+     *
+     * @return mixed
+     */
+    public function removeSession();
 }
