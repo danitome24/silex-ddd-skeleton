@@ -20,3 +20,9 @@ Slx\Domain\Entity\User\User:
       column: userName
       type: string
       nullable: false
+    createdOn:
+      type: datetime
+      nullable: false
+    updatedOn:
+      type: datetime
+      nullable: false
