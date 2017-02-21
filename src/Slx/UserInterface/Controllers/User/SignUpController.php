@@ -38,13 +38,17 @@ class SignUpController
         $form->handleRequest($this->application['request_stack']->getCurrentRequest());
         try {
             if ($form->isValid()) {
-                $this->application['signup.service']->execute(
+                $isSignedUp = $this->application['signup.service']->execute(
                     new SignUpUserCommand(
                         $form->get('username')->getData(),
                         $form->get('email')->getData(),
                         $form->get('password')->getData()
                     )
                 );
+
+                if ($isSignedUp) {
+                    return $this->application->redirect($this->application['url_generator']->generate('home'));
+                }
             }
         } catch (UserAlreadyExistsException $exception) {
             $form->get('email')->addError(new FormError('Email is already registered by another user'));

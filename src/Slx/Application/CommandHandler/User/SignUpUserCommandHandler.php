@@ -55,6 +55,6 @@ class SignUpUserCommandHandler
 
         $this->userRepository->add($user);
 
-        return 'OK';
+        return true;
     }
 }
