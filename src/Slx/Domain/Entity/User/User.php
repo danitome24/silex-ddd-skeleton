@@ -8,6 +8,8 @@
 
 namespace Slx\Domain\Entity\User;
 
+use Slx\Domain\Event\DomainEventDispatcher;
+use Slx\Domain\Event\User\UserRegistered;
 use Slx\Domain\ValueObject\Email\Email;
 use Slx\Domain\ValueObject\Password\Password;
 
@@ -59,6 +61,7 @@ class User
         $this->password = Password::fromString($passwd);
         $this->createdOn = new \DateTime();
         $this->updatedOn = new \DateTime();
+        $this->dispatchUserWasRegisteredEvent();
     }
 
     /**
@@ -83,5 +86,24 @@ class User
     public function username(): string
     {
         return $this->username;
+    }
+
+    /**
+     * @return Email
+     */
+    public function email(): Email
+    {
+        return $this->email;
+    }
+
+    /**
+     *  Dispatch event of user registered
+     */
+    private function dispatchUserWasRegisteredEvent()
+    {
+        DomainEventDispatcher::instance()->dispatch(
+            new UserRegistered($this->id(), $this->email()
+            )
+        );
     }
 }

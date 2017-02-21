@@ -12,5 +12,6 @@ $env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?:
 
 $app = require __DIR__ . '/../src/Slx/Infrastructure/app.php';
 require __DIR__ . '/../config/' . $env . '.php';
+require __DIR__ . '/../src/Slx/Infrastructure/middleware.php';
 $console = require __DIR__ . '/../src/Slx/UserInterface/Console/console.php';
 $console->run();
