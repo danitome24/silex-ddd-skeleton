@@ -22,6 +22,6 @@ class SendWelcomeEmailOnUserRegistered implements Listener
      */
     public function handle(DomainEvent $domainEvent)
     {
-        dump('mail to....', $domainEvent);
+        dump('mail to....', $domainEvent->eventName(), $domainEvent->userEmail());
     }
 }

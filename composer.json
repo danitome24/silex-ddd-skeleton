@@ -25,7 +25,8 @@
         "ramsey/uuid": "^3.4",
         "symfony/yaml": "^3.2",
         "doctrine/orm": "^2.0",
-        "dflydev/doctrine-orm-service-provider": "2.0.1"
+        "dflydev/doctrine-orm-service-provider": "2.0.1",
+        "monolog/monolog": "^1.22"
     },
     "autoload": {
         "psr-0": { "": "src/" }

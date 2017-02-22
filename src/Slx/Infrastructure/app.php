@@ -2,6 +2,7 @@
 
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
+use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
@@ -33,7 +34,9 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 
     return $twig;
 });
-
+//$app->register(new MonologServiceProvider(), array(
+//    'monolog.logfile' => __DIR__.'/development.log',
+//));
 $app['database_config'] = parse_ini_file(__DIR__ . '/../../../config/config.ini');
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(

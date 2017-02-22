@@ -40,6 +40,16 @@ class Email
     }
 
     /**
+     * Get email string.
+     *
+     * @return string
+     */
+    public function email(): string
+    {
+        return $this->email;
+    }
+
+    /**
      * Email setter
      *
      * @param string $email

@@ -43,11 +43,22 @@ class DomainEventDispatcher
         return static::$selfInstance;
     }
 
+    /**
+     * Add listener
+     *
+     * @param string $domainEventName
+     * @param Listener $listener
+     */
     public function addListener(string $domainEventName, Listener $listener)
     {
         $this->listeners[$domainEventName][] = $listener;
     }
 
+    /**
+     * Dispatch a domain event
+     *
+     * @param DomainEvent $event
+     */
     public function dispatch(DomainEvent $event)
     {
         foreach ($this->listeners[$event->eventName()] as $listener) {
