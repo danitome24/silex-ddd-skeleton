@@ -8,8 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 $app['sign_in_form'] = $app['form.factory']->createBuilder(FormType::class, [
-    'password' => 'Your Password',
-    'email' => 'Your email',
+    'password' => '',
+    'email' => '',
 ])
     ->add('email', TextType::class, [
         'constraints' => [
@@ -25,9 +25,9 @@ $app['sign_in_form'] = $app['form.factory']->createBuilder(FormType::class, [
     ->getForm();
 
 $app['sign_up_form'] = $app['form.factory']->createBuilder(FormType::class, [
-    'username' => 'UserName',
-    'password' => 'Your Password',
-    'email' => 'Your email',
+    'username' => '',
+    'password' => '',
+    'email' => '',
 ])
     ->add('username', TextType::class, [
         'constraints' => [

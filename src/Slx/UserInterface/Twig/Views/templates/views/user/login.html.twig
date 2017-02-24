@@ -1,30 +1,32 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <div>
+    <form>
         <h3 class="cover-heading">Sign in</h3>
         {{ form_start(form) }}
         {{ form_errors(form) }}
 
-        <div class="form-group{{ form.email.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.email, null, { 'label_attr' : { 'class' : 'control-label'}}) }}
+        <div class="row form-group{{ form.email.vars.valid ? '' : ' has-error' }}">
+            {{ form_label(form.email, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
             {{ form_widget(form.email) }}
             {{ form_errors(form.email) }}
         </div>
 
-        <div class="form-group{{ form.password.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.password, null, { 'label_attr' : { 'class' : 'control-label'}}) }}
+        <div class="row form-group{{ form.password.vars.valid ? '' : ' has-error' }}">
+            {{ form_label(form.password, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
             {{ form_widget(form.password) }}
             {{ form_errors(form.password) }}
         </div>
 
-        <div class="form-group">
-           <input type="submit" name="Submit">
+        <div class="form-group row">
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
         </div>
 
         <a href="{{ path('signup') }}">Register!!</a>
 
         {{ form_end(form) }}
-    </div>
+    </form>
 
 {% endblock %}
