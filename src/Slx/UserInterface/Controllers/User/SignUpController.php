@@ -47,6 +47,7 @@ class SignUpController
                 );
 
                 if ($isSignedUp) {
+                    $this->application['session']->start();
                     return $this->application->redirect($this->application['url_generator']->generate('home'));
                 }
             }

@@ -51,6 +51,7 @@ class SignInController
                     )
                 );
                 if ($isSignedIn) {
+                    $this->application['session']->set('user', $form->get('email')->getData());
                     return $this->application->redirect($this->application['url_generator']->generate('home'));
                 }
             }

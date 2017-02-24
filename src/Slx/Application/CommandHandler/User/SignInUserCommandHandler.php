@@ -27,24 +27,18 @@ class SignInUserCommandHandler
      * @var PasswordHashingService
      */
     private $hashingService;
-    /**
-     * @var UserAuthentifierService
-     */
-    private $authentifierService;
+
 
     /**
      * SignInUserCommandHandler constructor.
      *
      * @param UserRepositoryInterface $userRepository
      * @param PasswordHashingService $hashingService
-     * @param UserAuthentifierService $authentifierService
      */
-    public function __construct(UserRepositoryInterface $userRepository, PasswordHashingService $hashingService,
-                                UserAuthentifierService $authentifierService)
+    public function __construct(UserRepositoryInterface $userRepository, PasswordHashingService $hashingService)
     {
         $this->userRepository = $userRepository;
         $this->hashingService = $hashingService;
-        $this->authentifierService = $authentifierService;
     }
 
     /**
@@ -67,7 +61,6 @@ class SignInUserCommandHandler
             throw new UserPasswordDoesNotMatchException();
         }
 
-        $this->authentifierService->authenticate($user);
         return true;
     }
 }

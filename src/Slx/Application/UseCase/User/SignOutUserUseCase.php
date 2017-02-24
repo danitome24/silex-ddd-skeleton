@@ -8,24 +8,25 @@
 
 namespace Slx\Application\UseCase\User;
 
+use Silex\Application;
 use Slx\Domain\Service\User\UserAuthentifierService;
 
 class SignOutUserUseCase
 {
 
     /**
-     * @var UserAuthentifierService
+     * @var Application
      */
-    private $authentifierService;
+    private $application;
 
     /**
      * SignOutUserUseCase constructor.
      *
-     * @param UserAuthentifierService $authentifierService
+     * @param Application $application
      */
-    public function __construct(UserAuthentifierService $authentifierService)
+    public function __construct(Application $application)
     {
-        $this->authentifierService = $authentifierService;
+        $this->application = $application;
     }
 
     /**
@@ -33,6 +34,6 @@ class SignOutUserUseCase
      */
     public function execute()
     {
-       $this->authentifierService->removeSession();
+       $this->application['session']->clear();
     }
 }

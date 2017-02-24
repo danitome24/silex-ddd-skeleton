@@ -38,6 +38,7 @@ class AuthenticateUserService implements UserAuthentifierService
      */
     public function authenticate(User $user)
     {
+        $this->session->start();
         $this->session->set('user', ['username' => $user->username()]);
     }
 

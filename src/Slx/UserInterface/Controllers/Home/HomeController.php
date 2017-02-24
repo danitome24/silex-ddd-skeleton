@@ -33,6 +33,10 @@ class HomeController
      */
     public function indexAction()
     {
+        if (null === $this->application['session']->get('user')) {
+            return $this->application->redirect($this->application['url_generator']->generate('signin'));
+        }
+
         return $this->application['twig']->render('views/home/home.html.twig', []);
     }
 }

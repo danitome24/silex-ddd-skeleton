@@ -36,17 +36,17 @@ $app['haspassword.service'] = function () use ($app) {
     return new PasswordHashingService();
 };
 $app['signin.service'] = function () use ($app) {
-    return new SignInUserCommandHandler($app['user_repository'], $app['haspassword.service'], $app['authentication.service']);
+    return new SignInUserCommandHandler($app['user_repository'], $app['haspassword.service']);
 };
 $app['signup.service'] = function () use ($app) {
     return new SignUpUserCommandHandler($app['user_repository'], $app['haspassword.service']);
 };
 $app['signout.service'] = function () use ($app) {
-    return new SignOutUserUseCase($app['authentication.service']);
+    return new SignOutUserUseCase($app);
 };
-$app['authentication.service'] = function () use ($app) {
-    return new AuthenticateUserService($app['session']);
-};
+//$app['authentication.service'] = function () use ($app) {
+//    return new AuthenticateUserService();
+//};
 
 /**
  * Repositories
