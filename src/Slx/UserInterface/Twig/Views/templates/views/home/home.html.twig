@@ -2,4 +2,6 @@
 
 {% block content %}
     <h1>Home</h1>
+    <p>Welcome back {{ user.username }}</p>
+    <a href="{{ path('signout') }}">Log out</a>
 {% endblock %}

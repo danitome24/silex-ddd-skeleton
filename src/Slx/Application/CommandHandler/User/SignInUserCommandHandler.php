@@ -45,11 +45,11 @@ class SignInUserCommandHandler
      * Sign in user in web app
      *
      * @param SignInUserCommand $userRequest
-     * @return bool
+     * @return User
      * @throws UserDoesNotExistsException
      * @throws UserPasswordDoesNotMatchException
      */
-    public function execute(SignInUserCommand $userRequest)
+    public function execute(SignInUserCommand $userRequest): User
     {
         /** @var User $user */
         $user = $this->userRepository->fetchByEmail($userRequest->email());
@@ -61,6 +61,6 @@ class SignInUserCommandHandler
             throw new UserPasswordDoesNotMatchException();
         }
 
-        return true;
+        return $user;
     }
 }

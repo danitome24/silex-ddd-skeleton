@@ -11,6 +11,7 @@ namespace Slx\UserInterface\Controllers\User;
 use Slx\Application\Command\User\SignInUserCommand;
 use Silex\Application;
 use Slx\Domain\Entity\User\Exception\UserPasswordDoesNotMatchException;
+use Slx\Infrastructure\Service\User\AuthenticateUserService;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,14 +45,14 @@ class SignInController
 
         try {
             if ($form->isValid()) {
-                $isSignedIn = $this->application['signin.service']->execute(
+                $user = $this->application['signin.service']->execute(
                     new SignInUserCommand(
                         $form->get('email')->getData(),
                         $form->get('password')->getData()
                     )
                 );
-                if ($isSignedIn) {
-                    $this->application['session']->set('user', $form->get('email')->getData());
+                if (null != $user) {
+                    (new AuthenticateUserService($this->application['session']))->authenticate($user);
                     return $this->application->redirect($this->application['url_generator']->generate('home'));
                 }
             }

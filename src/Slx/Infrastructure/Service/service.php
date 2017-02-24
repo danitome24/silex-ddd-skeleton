@@ -44,9 +44,9 @@ $app['signup.service'] = function () use ($app) {
 $app['signout.service'] = function () use ($app) {
     return new SignOutUserUseCase($app);
 };
-//$app['authentication.service'] = function () use ($app) {
-//    return new AuthenticateUserService();
-//};
+$app['authentication.service'] = function () use ($app) {
+    return new AuthenticateUserService();
+};
 
 /**
  * Repositories
