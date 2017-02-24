@@ -3,7 +3,7 @@
 {% block content %}
     <div>
         <h3 class="cover-heading">Sign up</h3>
-        {{ form_start(form) }}
+        {{ form_start(form, {'method': 'POST'}) }}
         {{ form_errors(form) }}
         <div class="form-group{{ form.username.vars.valid ? '' : ' has-error' }}">
             {{ form_label(form.username, null, { 'label_attr' : { 'class' : 'col-sm-1 col-form-label'}}) }}
