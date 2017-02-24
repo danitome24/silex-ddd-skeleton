@@ -26,7 +26,9 @@
         "symfony/yaml": "^3.2",
         "doctrine/orm": "^2.0",
         "dflydev/doctrine-orm-service-provider": "2.0.1",
-        "monolog/monolog": "^1.22"
+        "monolog/monolog": "^1.22",
+        "phpmailer/phpmailer": "^5.2",
+        "df/silex-yaml-config-provider": "dev-master"
     },
     "autoload": {
         "psr-0": { "": "src/" }

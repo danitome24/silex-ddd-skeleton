@@ -4,6 +4,7 @@ use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Slx\Application\CommandHandler\User\SignUpUserCommandHandler;
 use Slx\Application\UseCase\User\SignOutUserUseCase;
+use Slx\Infrastructure\Service\Mail\Mailer;
 use Slx\UserInterface\Controllers\User\SignInController;
 use Slx\UserInterface\Controllers\User\SignOutController;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,8 +45,13 @@ $app['signup.service'] = function () use ($app) {
 $app['signout.service'] = function () use ($app) {
     return new SignOutUserUseCase($app);
 };
-$app['authentication.service'] = function () use ($app) {
-    return new AuthenticateUserService();
+//$app['authentication.service'] = function () use ($app) {
+//    return new AuthenticateUserService();
+//};
+$app['mailer.service'] = function () use ($app) {
+    return new Mailer(
+        $app['twig']
+    );
 };
 
 /**

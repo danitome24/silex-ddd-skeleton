@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 $app->before(function (Request $request, Application $app) {
-    DomainEventDispatcher::instance()->addListener(UserRegistered::EVENT_NAME, new SendWelcomeEmailOnUserRegistered());
+    DomainEventDispatcher::instance()->addListener(UserRegistered::EVENT_NAME, new SendWelcomeEmailOnUserRegistered($app['mailer.service']));
     DomainEventDispatcher::instance()->addListener(UserRegistered::EVENT_NAME, new LogNewUserOnUserRegistered($app['monolog']));
 });
 

@@ -26,6 +26,11 @@ class UserRegistered implements DomainEvent
     private $userEmail;
 
     /**
+     * @var string
+     */
+    private $username;
+
+    /**
      * @var \DateTimeImmutable
      */
     private $occurredOn;
@@ -35,12 +40,14 @@ class UserRegistered implements DomainEvent
      *
      * @param UserId $userId
      * @param Email $email
+     * @param string $username
      */
-    public function __construct(UserId $userId, Email $email)
+    public function __construct(UserId $userId, Email $email, string $username)
     {
         $this->occurredOn = new \DateTimeImmutable();
         $this->userId = $userId;
         $this->userEmail = $email;
+        $this->username = $username;
     }
 
     /**
@@ -49,6 +56,16 @@ class UserRegistered implements DomainEvent
     public function userEmail(): Email
     {
         return $this->userEmail;
+    }
+
+    /**
+     * Username
+     *
+     * @return string
+     */
+    public function username(): string
+    {
+        return $this->username;
     }
 
     /**

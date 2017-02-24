@@ -102,7 +102,10 @@ class User
     private function dispatchUserWasRegisteredEvent()
     {
         DomainEventDispatcher::instance()->dispatch(
-            new UserRegistered($this->id(), $this->email()
+            new UserRegistered(
+                $this->id(),
+                $this->email(),
+                $this->username()
             )
         );
     }
