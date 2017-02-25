@@ -9,6 +9,7 @@
 namespace Slx\UserInterface\Controllers\User;
 
 use Silex\Application;
+use Slx\Infrastructure\Service\User\AuthenticateUserService;
 
 class SignOutController
 {
@@ -32,7 +33,7 @@ class SignOutController
      */
     public function indexAction()
     {
-        $this->application['signout.service']->execute();
+        (new AuthenticateUserService($this->application['session']))->removeSession();
 
         return $this->application->redirect($this->application['url_generator']->generate('signin'));
     }
