@@ -46,9 +46,7 @@ class SignUpUserCommandHandler
         if (null != $user) {
             throw new UserAlreadyExistsException();
         }
-
-        $user = new User(
-            UserId::generateUserId(),
+        $user = $this->buildNewUser(
             $userRequest->username(),
             $userRequest->email(),
             $this->hashingService->hash(Password::fromString($userRequest->password()))
@@ -57,5 +55,24 @@ class SignUpUserCommandHandler
         $this->userRepository->add($user);
 
         return true;
+    }
+
+    /**
+     * Build new user
+     *
+     * @param $username
+     * @param $email
+     * @param $password
+     *
+     * @return User
+     */
+    protected function buildNewUser($username, $email, $password)
+    {
+        return new User(
+            UserId::generateUserId(),
+            $username,
+            $email,
+            $this->hashingService->hash(Password::fromString($password))
+        );
     }
 }

@@ -127,7 +127,7 @@ class FakePasswordHashService implements PasswordHashingService
      */
     public function hash(Password $password)
     {
-        return null;
+        return 'hashedPassword';
     }
 
     /**
@@ -161,5 +161,9 @@ class UserTesting extends User
     public function password(): Password
     {
         return Password::fromString('password');
+    }
+
+    public function dispatchUserWasRegisteredEvent()
+    {
     }
 }

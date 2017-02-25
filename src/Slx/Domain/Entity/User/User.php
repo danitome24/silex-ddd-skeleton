@@ -109,7 +109,7 @@ class User
     /**
      *  Dispatch event of user registered
      */
-    private function dispatchUserWasRegisteredEvent()
+    protected function dispatchUserWasRegisteredEvent()
     {
         DomainEventDispatcher::instance()->dispatch(
             new UserRegistered(
