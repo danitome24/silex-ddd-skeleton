@@ -5,3 +5,4 @@ var/
 environment.env
 config/config.ini
 config/files
+phpunit.xml
