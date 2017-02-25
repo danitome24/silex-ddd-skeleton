@@ -81,6 +81,16 @@ class User
     }
 
     /**
+     * Change password
+     *
+     * @param string $password
+     */
+    public function changePassword(string $password)
+    {
+        $this->password = $password;
+    }
+
+    /**
      * @return string
      */
     public function username(): string

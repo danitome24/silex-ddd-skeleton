@@ -11,6 +11,7 @@ namespace Slx\UserInterface\Controllers\User;
 use Silex\Application;
 use Slx\Application\Command\User\SignUpUserCommand;
 use Slx\Domain\Entity\User\Exception\UserAlreadyExistsException;
+use Slx\Domain\ValueObject\Password\PasswordIsNotValidException;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormError;
 
@@ -52,6 +53,8 @@ class SignUpController
             }
         } catch (UserAlreadyExistsException $exception) {
             $form->get('email')->addError(new FormError('Email is already registered by another user'));
+        } catch (PasswordIsNotValidException $passwordIsNotValidException) {
+            $form->get('password')->addError(new FormError($passwordIsNotValidException->getMessage()));
         }
 
         return $this->application['twig']->render('views/user/signup.html.twig',

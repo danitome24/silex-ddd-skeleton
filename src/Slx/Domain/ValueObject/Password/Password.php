@@ -23,10 +23,11 @@ class Password
      * Password constructor.
      *
      * @param string $pwd
+     * @throws PasswordIsNotValidException
      */
     private function __construct(string $pwd)
     {
-
+        $this->checkIfPasswordIsValid($pwd);
         $this->password = $pwd;
     }
 
@@ -48,5 +49,22 @@ class Password
     public function password(): string
     {
         return $this->password;
+    }
+
+    /**
+     * Check if password is valid
+     *
+     * @param $pwd
+     * @throws PasswordIsNotValidException
+     */
+    private function checkIfPasswordIsValid($pwd)
+    {
+        if (strlen($pwd) < self::MIN_LENGTH) {
+            throw new PasswordIsNotValidException('Password must be at least of 8 characters');
+        }
+
+        if (!(preg_match('/^[0-9a-zA-Z]+$/', $pwd))) {
+            throw new PasswordIsNotValidException('Password must contain at least one number');
+        }
     }
 }

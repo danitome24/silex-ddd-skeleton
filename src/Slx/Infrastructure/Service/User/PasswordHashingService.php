@@ -15,13 +15,13 @@ class PasswordHashingService implements PasswordHashingServiceInterface
 {
 
     /**
-     * @param string $password
+     * @param Password $password
      *
      * @return mixed
      */
-    public function hash(string $password)
+    public function hash(Password $password)
     {
-        return sha1($password);
+        return sha1($password->password());
     }
 
     /**

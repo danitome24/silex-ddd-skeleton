@@ -14,6 +14,7 @@ use Slx\Domain\Entity\User\Exception\UserAlreadyExistsException;
 use Slx\Domain\Entity\User\UserId;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
 use Slx\Domain\Service\User\PasswordHashingService;
+use Slx\Domain\ValueObject\Password\Password;
 
 class SignUpUserCommandHandler
 {
@@ -50,7 +51,7 @@ class SignUpUserCommandHandler
             UserId::generateUserId(),
             $userRequest->username(),
             $userRequest->email(),
-            $this->hashingService->hash($userRequest->password())
+            $this->hashingService->hash(Password::fromString($userRequest->password()))
         );
 
         $this->userRepository->add($user);
