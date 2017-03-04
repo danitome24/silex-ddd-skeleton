@@ -39,7 +39,7 @@ class SignUpController
         $form->handleRequest($this->application['request_stack']->getCurrentRequest());
         try {
             if ($form->isValid()) {
-                $isSignedUp = $this->application['signup.service']->execute(
+                $isSignedUp = $this->application['commandhandler.service']->execute(
                     new SignUpUserCommand(
                         $form->get('username')->getData(),
                         $form->get('email')->getData(),

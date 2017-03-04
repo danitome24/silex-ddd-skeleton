@@ -8,7 +8,9 @@
 
 namespace Slx\Application\Command\User;
 
-class SignUpUserCommand
+use Slx\Application\Command\CommandInterface;
+
+class SignUpUserCommand implements CommandInterface
 {
     /**
      * @var string
@@ -63,4 +65,11 @@ class SignUpUserCommand
         return $this->username;
     }
 
+    /**
+     * @return string
+     */
+    public function commandHandler(): string
+    {
+       return 'signup.service';
+    }
 }

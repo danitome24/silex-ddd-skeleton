@@ -9,7 +9,10 @@
 namespace Slx\Application\Command\User;
 
 
-class SignInUserCommand
+use Slx\Application\Command\CommandInterface;
+use Slx\Application\CommandHandler\User\SignInUserCommandHandler;
+
+class SignInUserCommand implements CommandInterface
 
 {
     /**
@@ -47,5 +50,13 @@ class SignInUserCommand
     public function password()
     {
         return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function commandHandler(): string
+    {
+        return 'signin.service';
     }
 }
