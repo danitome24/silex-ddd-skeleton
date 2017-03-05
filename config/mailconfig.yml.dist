@@ -1,0 +1,4 @@
+mail:
+  username: user@gmail.com
+  password: yourpassword
+  host: smtpserver

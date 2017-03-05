@@ -1,0 +1,7 @@
+[database]
+driver = driver
+charset = utf8
+host = 127.0.0.1
+dbname = dbname
+user = user
+password = user

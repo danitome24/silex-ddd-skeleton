@@ -23,7 +23,7 @@ class Mailer
     /**
      * @var string
      */
-    private $configPath = __DIR__ . '/../../../../../config/files/mailconfig.yml';
+    private $configPath = __DIR__ . '/../../../../../config/mailconfig.yml';
 
     /**
      * Mailer constructor.

@@ -4,5 +4,5 @@
 var/
 environment.env
 config/config.ini
-config/files
+mailconfig.yml
 phpunit.xml
