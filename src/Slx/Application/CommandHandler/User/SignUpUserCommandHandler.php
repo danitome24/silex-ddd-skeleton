@@ -49,7 +49,7 @@ class SignUpUserCommandHandler
         $user = $this->buildNewUser(
             $userRequest->username(),
             $userRequest->email(),
-            $this->hashingService->hash(Password::fromString($userRequest->password()))
+            Password::fromString($userRequest->password())
         );
 
         $this->userRepository->add($user);
@@ -72,7 +72,7 @@ class SignUpUserCommandHandler
             UserId::generateUserId(),
             $username,
             $email,
-            $this->hashingService->hash(Password::fromString($password))
+            $this->hashingService->hash($password)
         );
     }
 }
