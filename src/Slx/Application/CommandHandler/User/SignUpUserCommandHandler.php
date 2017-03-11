@@ -12,7 +12,7 @@ use Slx\Application\Command\CommandInterface;
 use Slx\Application\Command\User\SignUpUserCommand;
 use Slx\Domain\Entity\User\User;
 use Slx\Domain\Entity\User\Exception\UserAlreadyExistsException;
-use Slx\Domain\Entity\User\UserId;
+use Slx\Domain\ValueObject\User\UserId;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
 use Slx\Domain\Service\User\PasswordHashingService;
 use Slx\Domain\ValueObject\Password\Password;

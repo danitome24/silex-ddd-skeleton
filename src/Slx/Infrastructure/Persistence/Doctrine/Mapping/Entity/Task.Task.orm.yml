@@ -1,0 +1,39 @@
+Slx\Domain\Entity\Task\Task:
+  type: entity
+  repositoryClass: Slx\Infrastructure\Persistence\Doctrine\Repository\Task\TaskDoctrineRepository
+  table: task
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+  embedded:
+    id:
+      class: Slx\Domain\ValueObject\Task\TaskId
+      columnPrefix: false
+  manyToOne:
+    userAssigned:
+      targetEntity: Slx\Domain\Entity\User\User
+      inversedBy: tasks
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+  fields:
+    title:
+      type: string
+      length: 50
+      nullable: false
+    status:
+      type: string
+      length: 25
+      nullable: false
+    description:
+      type: string
+      length: 250
+      nullable: false
+    createdOn:
+      column: created_on
+      type: datetime
+      nullable: false
+    updatedOn:
+      column: updated_on
+      type: datetime
+      nullable: false

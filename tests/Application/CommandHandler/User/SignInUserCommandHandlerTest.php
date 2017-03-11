@@ -13,7 +13,7 @@ use Slx\Application\CommandHandler\User\SignInUserCommandHandler;
 use Slx\Domain\Entity\User\Exception\UserDoesNotExistsException;
 use Slx\Domain\Entity\User\Exception\UserPasswordDoesNotMatchException;
 use Slx\Domain\Entity\User\User;
-use Slx\Domain\Entity\User\UserId;
+use Slx\Domain\Entity\ValueObject\UserId;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
 use Slx\Domain\Service\User\PasswordHashingService;
 use Slx\Domain\ValueObject\Email\Email;

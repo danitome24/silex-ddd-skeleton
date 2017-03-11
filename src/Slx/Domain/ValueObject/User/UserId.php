@@ -6,7 +6,7 @@
  * Time: 19:29
  */
 
-namespace Slx\Domain\Entity\User;
+namespace Slx\Domain\ValueObject\User;
 
 use Ramsey\Uuid\Uuid;
 

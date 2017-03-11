@@ -1,4 +1,4 @@
-Slx\Domain\Entity\User\UserId:
+Slx\Domain\ValueObject\User\UserId:
   type: embeddable
   id:
     id:

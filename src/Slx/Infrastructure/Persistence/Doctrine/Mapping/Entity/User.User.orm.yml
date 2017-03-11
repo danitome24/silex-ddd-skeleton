@@ -13,8 +13,12 @@ Slx\Domain\Entity\User\User:
       class: Slx\Domain\ValueObject\Email\Email
       columnPrefix: false
     uid:
-      class: Slx\Domain\Entity\User\UserId
+      class: Slx\Domain\ValueObject\User\UserId
       columnPrefix: false
+  oneToMany:
+    tasks:
+      targetEntity: Slx\Domain\Entity\Task\Task
+      mappedBy: userAssigned
   fields:
     username:
       column: userName

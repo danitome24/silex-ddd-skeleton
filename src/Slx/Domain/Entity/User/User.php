@@ -8,10 +8,12 @@
 
 namespace Slx\Domain\Entity\User;
 
+use Slx\Domain\Entity\Task\Task;
 use Slx\Domain\Event\DomainEventDispatcher;
 use Slx\Domain\Event\User\UserRegistered;
 use Slx\Domain\ValueObject\Email\Email;
 use Slx\Domain\ValueObject\Password\Password;
+use Slx\Domain\ValueObject\User\UserId;
 
 class User
 {
@@ -34,6 +36,11 @@ class User
      * @var string
      */
     private $password;
+
+    /**
+     * @var array
+     */
+    private $tasks;
 
     /**
      * @var \DateTime
@@ -104,6 +111,22 @@ class User
     public function email(): Email
     {
         return $this->email;
+    }
+
+    /**
+     * @return array
+     */
+    public function tasks(): array
+    {
+        return $this->tasks;
+    }
+
+    /**
+     * @param Task $task
+     */
+    public function addTask(Task $task)
+    {
+        $this->tasks[] = $task;
     }
 
     /**

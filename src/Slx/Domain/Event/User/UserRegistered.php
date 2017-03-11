@@ -8,7 +8,7 @@
 
 namespace Slx\Domain\Event\User;
 
-use Slx\Domain\Entity\User\UserId;
+use Slx\Domain\ValueObject\User\UserId;
 use Slx\Domain\Event\DomainEvent;
 use Slx\Domain\ValueObject\Email\Email;
 
