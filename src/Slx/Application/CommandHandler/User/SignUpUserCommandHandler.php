@@ -8,6 +8,7 @@
 
 namespace Slx\Application\CommandHandler\User;
 
+use Slx\Application\Command\CommandInterface;
 use Slx\Application\Command\User\SignUpUserCommand;
 use Slx\Domain\Entity\User\User;
 use Slx\Domain\Entity\User\Exception\UserAlreadyExistsException;
@@ -40,7 +41,7 @@ class SignUpUserCommandHandler
      * @return bool
      * @throws UserAlreadyExistsException
      */
-    public function execute(SignUpUserCommand $userRequest)
+    public function execute(CommandInterface $userRequest)
     {
         $user = $this->userRepository->fetchByEmail($userRequest->email());
         if (null != $user) {
@@ -63,6 +64,7 @@ class SignUpUserCommandHandler
      * @param $username
      * @param $email
      * @param $password
+     * @codeCoverageIgnore
      *
      * @return User
      */

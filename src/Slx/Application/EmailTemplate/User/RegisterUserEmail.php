@@ -26,6 +26,7 @@ class RegisterUserEmail implements EmailTemplateInterface
      * RegisterUserEmail constructor.
      *
      * @param string $userEmail
+     * @param string $username
      */
     public function __construct(string $userEmail, string $username)
     {

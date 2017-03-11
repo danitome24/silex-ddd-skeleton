@@ -29,11 +29,15 @@ class CommandHandler implements CommandHandlerInterface
 
     /**
      *
-     * @param $command
+     * @param CommandInterface $command
      * @return mixed
+     * @throws CommandHandlerNotFoundException
      */
     public function execute(CommandInterface $command)
     {
+        if (!isset($this->application[$command->commandHandler()])) {
+            throw new CommandHandlerNotFoundException();
+        }
         return $this->application[$command->commandHandler()]->execute($command);
     }
 }
