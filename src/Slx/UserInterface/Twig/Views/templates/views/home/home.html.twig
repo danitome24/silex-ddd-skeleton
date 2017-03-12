@@ -1,8 +1,11 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <h1>Home</h1>
-    <p>Welcome back {{ user.username }}</p>
-    <a href="{{ path('createtask') }}">Add task</a>
-    <a href="{{ path('signout') }}">Log out</a>
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Home</h1>
+            <p>Welcome back {{ user.username }}</p>
+            <a href="{{ path('signout') }}">Log out</a>
+        </div>
+    </div>
 {% endblock %}

@@ -2,7 +2,28 @@
 
 {% block content %}
     <h2>List of tasks</h2>
-    {% for task in tasks %}
-        <p>* {{ task.title }}</p>
-    {% endfor %}
+    <div class="col-md-6">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Task title</th>
+                <th>Task description</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <br>
+        <a class="btn btn-primary" href="{{ path('createtask') }}" role="button">Add task</a>
+    </div>
 {% endblock %}
