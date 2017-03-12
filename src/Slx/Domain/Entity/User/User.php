@@ -116,7 +116,7 @@ class User
     /**
      * @return array
      */
-    public function tasks(): array
+    public function tasks()
     {
         return $this->tasks;
     }

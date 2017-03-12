@@ -2,6 +2,7 @@
 
 use Slx\Domain\ValueObject\Email\Email;
 use Slx\Domain\ValueObject\Password\Password;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -46,3 +47,4 @@ $app['sign_up_form'] = $app['form.factory']->createBuilder(FormType::class, [
         ]
     ])
     ->getForm();
+

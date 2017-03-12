@@ -16,6 +16,8 @@ $app->match('/signin', "signin.controller:indexAction")->bind('signin');
 $app->match('/signup', 'signup.controller:indexAction')->bind('signup');
 $app->match('/signout', 'signout.controller:indexAction')->bind('signout');
 $app->get('/home', 'home.controller:indexAction')->bind('home');
+$app->match('/task/add', 'createtask.controller:indexAction')->bind('createtask');
+$app->get('/task', 'listtask.controller:indexAction')->bind('listtask');
 
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {

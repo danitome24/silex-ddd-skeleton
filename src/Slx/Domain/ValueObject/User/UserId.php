@@ -34,4 +34,20 @@ class UserId
     {
         return new self();
     }
+
+    /**
+     * @return string
+     */
+    public function id()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+       return $this->id;
+    }
 }

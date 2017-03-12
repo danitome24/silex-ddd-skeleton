@@ -3,9 +3,12 @@
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Slx\Application\CommandHandler\CommandHandler;
+use Slx\Application\CommandHandler\Task\CreateTaskCommandHandler;
 use Slx\Application\CommandHandler\User\SignUpUserCommandHandler;
 use Slx\Application\UseCase\User\SignOutUserUseCase;
 use Slx\Infrastructure\Service\Mail\Mailer;
+use Slx\UserInterface\Controllers\Task\CreateTaskController;
+use Slx\UserInterface\Controllers\Task\ListTaskController;
 use Slx\UserInterface\Controllers\User\SignInController;
 use Slx\UserInterface\Controllers\User\SignOutController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +32,12 @@ $app['home.controller'] = function () use ($app) {
 };
 $app['signout.controller'] = function () use ($app) {
     return new SignOutController($app);
+};
+$app['createtask.controller'] = function () use ($app) {
+    return new CreateTaskController($app);
+};
+$app['listtask.controller'] = function () use ($app) {
+    return new ListTaskController($app);
 };
 
 /**
@@ -54,6 +63,9 @@ $app['mailer.service'] = function () use ($app) {
         $app['twig']
     );
 };
+$app['createtask.service'] = function () use ($app) {
+    return new CreateTaskCommandHandler($app['user_repository'], $app['task_repository']);
+};
 
 /**
  * Repositories
@@ -61,5 +73,7 @@ $app['mailer.service'] = function () use ($app) {
 $app['user_repository'] = function () use ($app) {
     return $app['em']->getRepository('Slx\Domain\Entity\User\User');
 };
-
+$app['task_repository'] = function () use ($app) {
+    return $app['em']->getRepository('Slx\Domain\Entity\Task\Task');
+};
 

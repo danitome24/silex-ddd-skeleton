@@ -61,6 +61,14 @@ class Email
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->email;
+    }
+
+    /**
      * Check if user email is valid
      *
      * @param string $email

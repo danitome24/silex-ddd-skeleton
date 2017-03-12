@@ -66,12 +66,12 @@ class Task
         $this->description = $description;
         $this->createdOn = new \DateTimeImmutable();
         $this->updatedOn = new \DateTimeImmutable();
-        DomainEventDispatcher::instance()->dispatch(
-            new TaskWasCreated(
-                $this->id,
-                $this->title()
-            )
-        );
+//        DomainEventDispatcher::instance()->dispatch(
+//            new TaskWasCreated(
+//                $this->id,
+//                $this->title()
+//            )
+//        );
     }
 
     /**
@@ -142,7 +142,7 @@ class Task
      */
     public function setStatus(string $status)
     {
-        if ($status !== self::OPEN || $status !== self::CLOSED) {
+        if ($status !== self::OPEN && $status !== self::CLOSED) {
             throw new TaskStatusDoesNotExistsException();
         }
 
