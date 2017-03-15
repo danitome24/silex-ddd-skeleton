@@ -1,27 +1,33 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <div class="col-sm-8">
+    <div class="col-8">
         <h3 class="cover-heading">Create new Task</h3>
         {{ form_start(form, {'method': 'POST'}) }}
         {{ form_errors(form) }}
 
         <div class="row form-group{{ form.title.vars.valid ? '' : ' has-error' }}">
             {{ form_label(form.title, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
-            {{ form_widget(form.title) }}
-            {{ form_errors(form.title) }}
+            <div class="col-10">
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
         </div>
 
         <div class="row form-group{{ form.description.vars.valid ? '' : ' has-error' }}">
             {{ form_label(form.description, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
-            {{ form_widget(form.description) }}
-            {{ form_errors(form.description) }}
+            <div class="col-10">
+                {{ form_widget(form.description) }}
+                {{ form_errors(form.description) }}
+            </div>
         </div>
 
         <div class="row form-group{{ form.users.vars.valid ? '' : ' has-error' }}">
             {{ form_label(form.users, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
-            {{ form_widget(form.users) }}
-            {{ form_errors(form.users) }}
+            <div class="col-10">
+                {{ form_widget(form.users) }}
+                {{ form_errors(form.users) }}
+            </div>
         </div>
 
         <div class="form-group row">

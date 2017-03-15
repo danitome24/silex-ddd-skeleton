@@ -14,6 +14,7 @@ use Slx\Application\Command\Task\CreateTaskCommand;
 use Slx\Domain\Entity\User\User;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -71,7 +72,7 @@ class CreateTaskController extends Controller
                     'class' => 'form-control'
                 ]
             ])
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'constraints' => [
                     new Assert\NotBlank()
                 ],
