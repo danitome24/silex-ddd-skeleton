@@ -66,12 +66,14 @@ class Task
         $this->description = $description;
         $this->createdOn = new \DateTimeImmutable();
         $this->updatedOn = new \DateTimeImmutable();
-//        DomainEventDispatcher::instance()->dispatch(
-//            new TaskWasCreated(
-//                $this->id,
-//                $this->title()
-//            )
-//        );
+        DomainEventDispatcher::instance()->dispatch(
+            new TaskWasCreated(
+                $this->id,
+                $this->title(),
+                $this->description(),
+                $this->userAssigned()
+            )
+        );
     }
 
     /**

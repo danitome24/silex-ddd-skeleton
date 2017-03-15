@@ -34,7 +34,7 @@ class Mailer
         $parameters = $this->getMailerParameters();
         $this->phpMailer = new PHPMailer;
         $this->phpMailer->isSMTP();
-        $this->phpMailer->SMTPDebug = 2;
+//        $this->phpMailer->SMTPDebug = 2;
         $this->phpMailer->Debugoutput = 'html';
         $this->phpMailer->Host = $parameters['mail']['host'];
         $this->phpMailer->Port = 587;

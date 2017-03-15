@@ -7,7 +7,7 @@
         {{ form_errors(form) }}
 
         <div class="row form-group {{ form.email.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.email, null, { 'label_attr' : { 'class' : 'col-4 col-form-label'}}) }}
+            {{ form_label(form.email, null, { 'label_attr' : { 'class' : 'col-2 col-form-label'}}) }}
             <div class="col-8">
                 {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
@@ -15,7 +15,7 @@
         </div>
 
         <div class="row form-group {{ form.password.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.password, null, { 'label_attr' : { 'class' : 'col-4 col-form-label'}}) }}
+            {{ form_label(form.password, null, { 'label_attr' : { 'class' : 'col-2 col-form-label'}}) }}
             <div class="col-8">
                 {{ form_widget(form.password) }}
                 {{ form_errors(form.password) }}

@@ -7,7 +7,7 @@
         {{ form_errors(form) }}
 
         <div class="row form-group{{ form.title.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.title, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
+            {{ form_label(form.title, null, { 'label_attr' : { 'class' : 'col-2 col-form-label'}}) }}
             <div class="col-10">
                 {{ form_widget(form.title) }}
                 {{ form_errors(form.title) }}
@@ -15,7 +15,7 @@
         </div>
 
         <div class="row form-group{{ form.description.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.description, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
+            {{ form_label(form.description, null, { 'label_attr' : { 'class' : 'col-2 col-form-label'}}) }}
             <div class="col-10">
                 {{ form_widget(form.description) }}
                 {{ form_errors(form.description) }}
@@ -23,7 +23,7 @@
         </div>
 
         <div class="row form-group{{ form.users.vars.valid ? '' : ' has-error' }}">
-            {{ form_label(form.users, null, { 'label_attr' : { 'class' : 'col-sm-2 col-form-label'}}) }}
+            {{ form_label(form.users, null, { 'label_attr' : { 'class' : 'col-2 col-form-label'}}) }}
             <div class="col-10">
                 {{ form_widget(form.users) }}
                 {{ form_errors(form.users) }}
