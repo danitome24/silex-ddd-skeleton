@@ -1,10 +1,13 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+
 ini_set('display_errors', 0);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $app = require __DIR__ . '/../src/Slx/Infrastructure/app.php';
+Request::enableHttpMethodParameterOverride();
 require __DIR__ . '/../src/Slx/Infrastructure/middleware.php';
 require __DIR__ . '/../config/prod.php';
 require __DIR__ . '/../src/Slx/UserInterface/Form/form.php';

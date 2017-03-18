@@ -4,11 +4,13 @@ use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Slx\Application\CommandHandler\CommandHandler;
 use Slx\Application\CommandHandler\Task\CreateTaskCommandHandler;
+use Slx\Application\CommandHandler\Task\RemoveTaskCommandHandler;
 use Slx\Application\CommandHandler\User\SignUpUserCommandHandler;
 use Slx\Application\UseCase\User\SignOutUserUseCase;
 use Slx\Infrastructure\Service\Mail\Mailer;
 use Slx\UserInterface\Controllers\Task\CreateTaskController;
 use Slx\UserInterface\Controllers\Task\ListTaskController;
+use Slx\UserInterface\Controllers\Task\RemoveTaskController;
 use Slx\UserInterface\Controllers\User\SignInController;
 use Slx\UserInterface\Controllers\User\SignOutController;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,6 +41,9 @@ $app['createtask.controller'] = function () use ($app) {
 $app['listtask.controller'] = function () use ($app) {
     return new ListTaskController($app);
 };
+$app['removetask.controller'] = function () use ($app) {
+    return new RemoveTaskController($app);
+};
 
 /**
  * Services
@@ -65,6 +70,9 @@ $app['mailer.service'] = function () use ($app) {
 };
 $app['createtask.service'] = function () use ($app) {
     return new CreateTaskCommandHandler($app['user_repository'], $app['task_repository']);
+};
+$app['removetask.service'] = function () use ($app) {
+    return new RemoveTaskCommandHandler($app['task_repository']);
 };
 
 /**

@@ -13,6 +13,7 @@ class Task
 {
     const OPEN = 'open';
     const CLOSED = 'closed';
+    const REMOVED = 'removed';
 
     /**
      * @var integer $id
@@ -88,6 +89,22 @@ class Task
     public static function build(string $title, User $user, string $status, string $description)
     {
         return new self($title, $user, $status, $description);
+    }
+
+    /**
+     * @return int|TaskId
+     */
+    public function id()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set a task removed
+     */
+    public function remove()
+    {
+        $this->status = self::REMOVED;
     }
 
     /**

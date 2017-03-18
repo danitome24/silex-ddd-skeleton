@@ -20,6 +20,13 @@
                         <th scope="row">{{ loop.index }}</th>
                         <td>{{ task.title }}</td>
                         <td>{{ task.description }}</td>
+                        <td>
+                        <form action="{{ path('removetask') }}" method="POST">
+                            <input type="hidden" id="_method" name="_method" value="DELETE" />
+                            <input type="hidden" name="task" value="{{ task.id }}"/>
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </form>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

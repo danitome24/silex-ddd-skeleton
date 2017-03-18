@@ -11,8 +11,9 @@ namespace Slx\Infrastructure\Persistence\Doctrine\Repository\Task;
 use Doctrine\ORM\EntityRepository;
 use Slx\Domain\Entity\Task\Task;
 use Slx\Domain\Entity\Task\TaskRepositoryInterface;
+use Slx\Infrastructure\Persistence\Doctrine\Repository\AbstractEntityRepository;
 
-class TaskDoctrineRepository extends EntityRepository implements TaskRepositoryInterface
+class TaskDoctrineRepository extends AbstractEntityRepository implements TaskRepositoryInterface
 {
     /**
      * @param Task $task
@@ -22,5 +23,14 @@ class TaskDoctrineRepository extends EntityRepository implements TaskRepositoryI
     {
         $this->getEntityManager()->persist($task);
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @param $taskId
+     * @return mixed
+     */
+    public function fetchById($taskId)
+    {
+        return $this->getEntityManager()->find(Task::class, $taskId);
     }
 }

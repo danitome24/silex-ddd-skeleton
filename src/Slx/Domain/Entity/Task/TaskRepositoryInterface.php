@@ -10,4 +10,9 @@ namespace Slx\Domain\Entity\Task;
 
 interface TaskRepositoryInterface
 {
+    /**
+     * @param $taskId
+     * @return Task
+     */
+    public function fetchById($taskId);
 }

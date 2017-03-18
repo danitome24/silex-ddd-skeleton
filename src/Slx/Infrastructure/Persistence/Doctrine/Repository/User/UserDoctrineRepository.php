@@ -13,7 +13,7 @@ use Slx\Domain\Entity\User\User;
 use Slx\Domain\Entity\User\UserRepositoryInterface;
 use Slx\Infrastructure\Persistence\Doctrine\Repository\AbstractEntityRepository;
 
-class UserDoctrineRepository extends EntityRepository implements UserRepositoryInterface
+class UserDoctrineRepository extends AbstractEntityRepository implements UserRepositoryInterface
 {
     /**
      * @param User $user
@@ -32,6 +32,6 @@ class UserDoctrineRepository extends EntityRepository implements UserRepositoryI
      */
     public function fetchByEmail($email)
     {
-        return parent::findOneBy(['email.email' => $email]);
+        return $this->getEntityManager()->getRepository(User::class)->findOneBy(['email.email' => $email]);
     }
 }
