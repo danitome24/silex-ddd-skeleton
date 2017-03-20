@@ -8,6 +8,8 @@
 
 namespace Slx\Domain\Entity\Task;
 
+use Slx\Domain\ValueObject\User\UserId;
+
 interface TaskRepositoryInterface
 {
     /**
@@ -15,4 +17,12 @@ interface TaskRepositoryInterface
      * @return Task
      */
     public function fetchById($taskId);
+
+    /**
+     * Fetch only available tasks given user
+     *
+     * @param UserId $userId
+     * @return mixed
+     */
+    public function fetchAvailable(UserId $userId);
 }

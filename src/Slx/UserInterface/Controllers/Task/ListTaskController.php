@@ -10,6 +10,7 @@ namespace Slx\UserInterface\Controllers\Task;
 
 
 use Silex\Application;
+use Slx\Domain\Entity\User\User;
 
 class ListTaskController
 {
@@ -31,7 +32,7 @@ class ListTaskController
 
         return $this->application['twig']->render('views/task/list.html.twig',
             [
-                'tasks' => $user->tasks(),
+                'tasks' => $this->application['task_repository']->fetchAvailable($user->id()),
             ]
         );
     }

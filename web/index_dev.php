@@ -22,6 +22,6 @@ Request::enableHttpMethodParameterOverride();
 require __DIR__ . '/../config/dev.php';
 require __DIR__ . '/../src/Slx/UserInterface/Form/form.php';
 require __DIR__ . '/../src/Slx/Infrastructure/Service/service.php';
-require __DIR__ . '/../src/Slx/UserInterface/Controllers/controllers.php';
 require __DIR__ . '/../src/Slx/Infrastructure/middleware.php';
+require __DIR__ . '/../src/Slx/UserInterface/Controllers/controllers.php';
 $app->run();

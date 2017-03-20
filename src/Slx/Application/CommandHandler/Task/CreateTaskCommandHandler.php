@@ -54,7 +54,7 @@ class CreateTaskCommandHandler implements CommandHandlerInterface
         if (null == $user) {
             throw new UserDoesNotExistsException();
         }
-        $task = Task::build($command->title(), $user, Task::CLOSED, $command->description());
+        $task = Task::build($command->title(), $user, Task::OPEN, $command->description());
         $this->taskRepository->add($task);
     }
 }
