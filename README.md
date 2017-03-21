@@ -28,10 +28,10 @@ vendor/phpunit/phpunit/phpunit
 
 ## Built with
 * [Silex](http://silex.sensiolabs.org/) - Microframework for PHP
-* [Composer](https://getcomposer.org/)
+* [Composer](https://getcomposer.org/) - Dependencies management
 
 ## Author
 Me, Daniel Tomé Fernández <danieltomefer@gmail.com>
 
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT [License](LICENSE.md) - see the LICENSE.md file for details
