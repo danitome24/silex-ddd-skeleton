@@ -1,9 +1,33 @@
-web:
-  build: .
-  ports:
-    - "8000:80"
-    - "3306:3306"
-  volumes:
-    - .:/var/www/html
-  env_file:
-    - environment.env
+version: '2.1'
+
+services:
+
+ web:
+   build: .
+   ports:
+     - "8000:80"
+   links:
+     - db:db
+   volumes:
+     - .:/var/www/html
+   networks:
+     silexddskeleton:
+       ipv4_address: 172.20.1.10
+
+ db:
+   image: mysql:5.6
+   ports:
+     - "3306:3306"
+   env_file: environment.env
+   volumes:
+     - ./.mysql-data:/var/lib/mysql
+   networks:
+     silexddskeleton:
+       ipv4_address: 172.20.1.11
+
+networks:
+  silexddskeleton:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.1.0/24

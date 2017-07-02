@@ -40,8 +40,8 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 $app['database_config'] = parse_ini_file(__DIR__ . '/../../../config/config.ini');
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
-        'driver' => 'pdo_mysql',
-        'host' => '0.0.0.0',
+        'driver' => $app['database_config']['driver'],
+        'host' => $app['database_config']['host'],
         'dbname' => $app['database_config']['dbname'],
         'user' => $app['database_config']['user'],
         'password' => $app['database_config']['password'],

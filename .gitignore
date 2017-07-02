@@ -6,3 +6,4 @@ environment.env
 config/config.ini
 mailconfig.yml
 phpunit.xml
+.mysql-data
